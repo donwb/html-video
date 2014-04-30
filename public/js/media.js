@@ -22,15 +22,9 @@ $(document).ready(function() {
         console.log(vid);
         vid.src = url;
         vid.play();
-
-        
-
       },
-
-      // Error Callback`
       function(err) {
-        // Log the error to the console.
-        console.log('The following error occurred when trying to use getUserMedia: ' + err);
+        console.log('The following error occurred: ' + err);
       }
     );
 
@@ -39,6 +33,8 @@ $(document).ready(function() {
   }
 
   $('#record').click(function() {
+    $('#last-recording').html('');
+
     var opts = {
           type: "video",
           video: {
@@ -59,18 +55,15 @@ $(document).ready(function() {
     recordRTC.stopRecording(function(videoURL){
       console.log(videoURL);
       _lastURL = videoURL;
+      $('#last-recording').html(_lastURL);
     });
   });
 
   $('#replay').click(function() {
     console.log('Last URL: ' + _lastURL);
 
-    var vid = $('#camera-stream')[0];
-    vid.src = _lastURL;
     window.open(_lastURL);
   });
-
-
 });
 
 
