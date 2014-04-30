@@ -52,11 +52,7 @@ $(document).ready(function() {
         };
     window.recordRTC = RecordRTC(_mediaStream, opts);
     recordRTC.startRecording();
-/*
-    recordRTC.stopRecording(function(videoURL){
-      console.log(videoURL);
-    });
-*/
+
   });
 
   $('#stop').click(function() {
